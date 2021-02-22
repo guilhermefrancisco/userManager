@@ -33,6 +33,7 @@ namespace userManager.Application
             });
             services.AddControllers();
 
+            services.AddIdentityConfig();
             services.AddContextDependency(Configuration);
         }
 
