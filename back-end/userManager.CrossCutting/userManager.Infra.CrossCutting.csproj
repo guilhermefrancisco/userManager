@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="InversionOfControl\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\userManager.Data\userManager.Data.csproj" />
+    <ProjectReference Include="..\userManager.Services\userManager.Service.csproj" />
+  </ItemGroup>
+
+</Project>
