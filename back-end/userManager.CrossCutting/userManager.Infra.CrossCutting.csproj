@@ -5,11 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="InversionOfControl\" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="..\userManager.Data\userManager.Data.csproj" />
+    <ProjectReference Include="..\userManager.Data\userManager.Infra.Data.csproj" />
     <ProjectReference Include="..\userManager.Services\userManager.Service.csproj" />
   </ItemGroup>
 

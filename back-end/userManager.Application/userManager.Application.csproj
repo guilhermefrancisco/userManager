@@ -9,7 +9,14 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\userManager.CrossCutting\userManager.CrossCutting.csproj" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="3.1.12">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\userManager.CrossCutting\userManager.Infra.CrossCutting.csproj" />
     <ProjectReference Include="..\userManager.Domain\userManager.Domain.csproj" />
     <ProjectReference Include="..\userManager.Services\userManager.Service.csproj" />
   </ItemGroup>

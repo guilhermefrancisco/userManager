@@ -10,25 +10,32 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using userManager.Infra.CrossCutting.InversionOfControl;
 
 namespace userManager.Application
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
-        {
-            Configuration = configuration;
-        }
-
+        public Startup(IConfiguration configuration) => Configuration = configuration;
         public IConfiguration Configuration { get; }
 
-        // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.AllowAnyHeader();
+                        builder.AllowAnyMethod();
+                        builder.AllowAnyOrigin();
+                    });
+            });
             services.AddControllers();
+
+            services.AddContextDependency(Configuration);
         }
 
-        // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
             if (env.IsDevelopment())
@@ -37,10 +44,9 @@ namespace userManager.Application
             }
 
             app.UseHttpsRedirection();
-
             app.UseRouting();
-
             app.UseAuthorization();
+            app.UseCors();
 
             app.UseEndpoints(endpoints =>
             {

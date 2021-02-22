@@ -13,19 +13,19 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3 - Service", "3 - Service"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4 - Infra", "4 - Infra", "{6B191A84-EAAC-4772-9C86-7F36EDEF12EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userManager.Application", "userManager.Application\userManager.Application.csproj", "{33858CF7-19B0-4272-B057-46C4955FC04D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userManager.Application", "userManager.Application\userManager.Application.csproj", "{33858CF7-19B0-4272-B057-46C4955FC04D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userManager.Domain", "userManager.Domain\userManager.Domain.csproj", "{8B5E47AC-022A-4AFF-8530-8AD2EDF7AC6A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userManager.Domain", "userManager.Domain\userManager.Domain.csproj", "{8B5E47AC-022A-4AFF-8530-8AD2EDF7AC6A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userManager.Service", "userManager.Services\userManager.Service.csproj", "{D76695CC-8A82-4D9C-810F-0109C8A37189}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userManager.Service", "userManager.Services\userManager.Service.csproj", "{D76695CC-8A82-4D9C-810F-0109C8A37189}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.1 - Data", "4.1 - Data", "{B0597B6F-4B92-4CFF-A52E-BB4B81F198F6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4.2 - CrossCutting", "4.2 - CrossCutting", "{DE2C8C56-52DB-426A-80E0-750F1B0E3EC2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userManager.Data", "userManager.Data\userManager.Data.csproj", "{297A60F0-9F7E-4353-95CB-FFF896998CD2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userManager.Infra.Data", "userManager.Data\userManager.Infra.Data.csproj", "{297A60F0-9F7E-4353-95CB-FFF896998CD2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "userManager.CrossCutting", "userManager.CrossCutting\userManager.CrossCutting.csproj", "{E8B7D057-16A0-4C4C-8B32-EFFB4DACCFCA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "userManager.Infra.CrossCutting", "userManager.CrossCutting\userManager.Infra.CrossCutting.csproj", "{E8B7D057-16A0-4C4C-8B32-EFFB4DACCFCA}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
