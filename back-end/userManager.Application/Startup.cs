@@ -34,6 +34,7 @@ namespace userManager.Application
             services.AddControllers();
 
             services.AddIdentityConfig();
+            services.AddServiceDependency();
             services.AddContextDependency(Configuration);
         }
 
