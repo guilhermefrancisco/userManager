@@ -11,6 +11,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using userManager.Infra.CrossCutting.InversionOfControl;
+using userManager.Infra.CrossCutting.InversionOfControl.AutoMapper;
 
 namespace userManager.Application
 {
@@ -36,6 +37,8 @@ namespace userManager.Application
             services.AddIdentityConfig();
             services.AddServiceDependency();
             services.AddContextDependency(Configuration);
+
+            services.AddAutoMapperUsuario();
         }
 
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

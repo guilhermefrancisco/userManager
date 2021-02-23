@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Mvc;
 using System.Linq;
 using System.Threading.Tasks;
 using userManager.Domain.DTOs.Usuario;
@@ -11,7 +12,12 @@ namespace userManager.Application.Controllers
     public class AuthorizationController : ControllerBase
     {
         private readonly IServiceAuthorization _serviceAuthorization;
-        public AuthorizationController(IServiceAuthorization serviceAuthorization) => _serviceAuthorization = serviceAuthorization;
+        private readonly IMapper _mapper;
+        public AuthorizationController(IServiceAuthorization serviceAuthorization, IMapper mapper)
+        {
+            _serviceAuthorization = serviceAuthorization;
+            _mapper = mapper;
+        }
 
         [HttpPost("entrar")]
         public async Task<ActionResult> Login(LoginUserDTO loginUser)
@@ -22,11 +28,10 @@ namespace userManager.Application.Controllers
 
             if (result.Succeeded)
             {
-                //gerar token e retornar
                 return Ok(new
                 {
                     success = true,
-                    data = "token"
+                    data = _serviceAuthorization.GerarJWT(loginUser.Email)
                 });
             }
 
@@ -42,13 +47,14 @@ namespace userManager.Application.Controllers
 
             if (!result.Succeeded) return BadRequest(result.Errors);
 
-            var x = await _serviceAuthorization.Entrar(new LoginUserDTO() { Email = registerUser.Email, Senha = registerUser.Senha });
+            var loginUser = _mapper.Map<RegisterUserDTO, LoginUserDTO>(registerUser);
 
-            //gerar token e retornar
+            await _serviceAuthorization.Entrar(loginUser);
+
             return Ok(new
             {
                 success = true,
-                data = "token"
+                data = _serviceAuthorization.GerarJWT(loginUser.Email)
             });
         }
 

@@ -32,5 +32,11 @@ namespace userManager.Service.Services
 
             return await _userManager.CreateAsync(user, registerUser.Senha);
         }
+
+        public async Task<string> GerarJWT(string email)
+        {
+            return "falta gerar token";
+        }
+
     }
 }
