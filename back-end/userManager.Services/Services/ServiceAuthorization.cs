@@ -42,29 +42,27 @@ namespace userManager.Service.Services
             return await _userManager.CreateAsync(user, registerUser.Senha);
         }
 
+        public async Task<IdentityResult> AdicionarClaimRole(UserDTO user)
+        {
+            var usuario = await _userManager.FindByEmailAsync(user.Email);
+            var adminRole = new Claim(ClaimTypes.Role, "Administrador");
+
+            return await _userManager.AddClaimAsync(usuario, adminRole);
+        }
+
         public async Task<string> GerarJWT(string email)
         {
-            /*
-             * trecho responsavel pela criacao de claim, usar futuramente para criacao de roles especificas
-            
-                var user = await _userManager.FindByEmailAsync(email);
-                var claims = await _userManager.GetClaimsAsync(user);
+            //pega a claim para retornar junto do token
+            var user = await _userManager.FindByEmailAsync(email);
+            var claims = await _userManager.GetClaimsAsync(user);
 
-                claims.Add(new Claim(ClaimTypes.Role, "Administrador"));
-                claims.Add(new Claim(JwtRegisteredClaimNames.Email, user.Email));
-
-                var identityClaims = new ClaimsIdentity();
-                identityClaims.AddClaims(await _userManager.GetClaimsAsync(user));
-                identityClaims.AddClaims(claims);
-            */
+            var identityClaims = new ClaimsIdentity(claims);
 
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes(_appSettings.Secret);
             var tokenDescriptor = new SecurityTokenDescriptor
             {
-                /* claim
-                 * Subject = identityClaims,
-                 */
+                Subject = identityClaims,
                 Issuer = _appSettings.Emissor,
                 Audience = _appSettings.ValidoEm,
                 Expires = DateTime.UtcNow.AddHours(_appSettings.ExpiracaoHoras),
